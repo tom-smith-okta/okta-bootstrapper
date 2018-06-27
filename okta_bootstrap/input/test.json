@@ -1,0 +1,14 @@
+{
+	"PORT": {
+		"saveToOutput": true,
+		"comment": "The port that your web app will be running on. Used to build the REDIRECT_URI and to launch the node express app.",
+		"objType": "string",
+		"default": "8080"
+	},
+	"REDIRECT_URI": {
+		"saveToOutput": true,
+		"comment": "The URL where your web app lives",
+		"objType": "string",
+		"default": "http://localhost:{{PORT}}"
+	}
+}

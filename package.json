@@ -1,0 +1,23 @@
+{
+  "name": "okta-bootstrapper",
+  "version": "1.0.32",
+  "description": "The Okta tenant bootstrapper allows you to create Okta objects (users, groups, apps, etc.) in your Okta tenant in an automated way.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/tom-smith-okta/okta-bootstrapper/blob/master/readme.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tom-smith-okta/okta-bootstrapper.git"
+  },
+  "keywords": [],
+  "author": "tom.smith@okta.com",
+  "license": "ISC",
+  "dependencies": {
+    "@okta/okta-sdk-nodejs": "^1.1.0",
+    "dotenv": "^6.0.0",
+    "promptly": "^3.0.3",
+    "request": "^2.87.0"
+  }
+}
