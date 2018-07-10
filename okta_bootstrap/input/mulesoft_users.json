@@ -10,27 +10,6 @@
 		"default": "{{GENERATE_TAG}}",
 		"objType": "string"
 	},
-	"SECOND_EMAIL": {
-		"saveToOutput": true,
-		"hint": "This email address will be used as the secondary email address (not userid) for all fake users. Use a valid email address if you want to be able to do things like reset the password for fake users.",
-		"objType": "string"
-	},
-	"BRONZE_GROUP": {
-		"saveToOutput": true,
-		"objType": "json",
-		"objectClass": "okta:user_group",
-		"default": {
-			"profile": {
-				"name": "solar_system_users {{TAG}}",
-				"description": "All solar system users"
-			}
-		}
-	},
-	"BRONZE_GROUP_ID": {
-		"saveToOutput": true,
-		"objType": "string",
-		"default": "{{BRONZE_GROUP.id}}"
-	},
 	"SILVER_GROUP": {
 		"saveToOutput": true,
 		"objType": "json",
@@ -69,42 +48,6 @@
 		"objType": "string",
 		"default": "8080"
 	},
-	"INTROSPECT_CLIENT": {
-		"saveToOutput": true,
-		"comment": "The client id that we are going to use for authentication and authorization vs. Okta",
-		"objType": "json",
-		"objectClass": "okta:client",
-		"default": {
-			"client_name": "mulesoft introspect client {{TAG}}",
-			"client_uri": null,
-			"logo_uri": null,
-			"redirect_uris": [
-				"{{REDIRECT_URI}}"
-			],
-			"response_types": [
-				"code",
-				"token",
-				"id_token"
-			],
-			"grant_types": [
-				"authorization_code", "implicit"
-			],
-			"token_endpoint_auth_method": "client_secret_basic",
-			"application_type": "web"
-		},
-		"oktaEndpoint": "/oauth2/v1/clients",
-		"IDfieldName": "client_id"
-	},
-	"INTROSPECT_CLIENT_ID": {
-		"saveToOutput": true,
-		"objType": "string",
-		"default": "{{INTROSPECT_CLIENT.client_id}}"
-	},
-	"INTROSPECT_CLIENT_SECRET": {
-		"saveToOutput": true,
-		"objType": "string",
-		"default": "{{INTROSPECT_CLIENT.client_secret}}"
-	},
 	"FAKE_USER_PASSWORD": {
 		"saveToOutput": true,
 		"hint": "This password will be used for all fake users.",
@@ -129,32 +72,6 @@
 		"hint": "Answer to recovery question for fake users",
 		"default": "Okta"
 	},
-	"BRONZE_USER": {
-		"saveToOutput": true,
-		"objType": "json",
-		"objectClass": "okta:user",
-		"default": {
-			"profile": {
-				"firstName": "{{GENERATE_FIRSTNAME}}",
-				"lastName": "{{GENERATE_LASTNAME}}",
-				"email": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}",
-				"login": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}",
-				"secondEmail": "{{SECOND_EMAIL}}"
-			},
-			"credentials": {
-				"password" : {
-					"value": "{{FAKE_USER_PASSWORD}}"
-				},
-				"recovery_question": {
-					"question": "{{FAKE_USER_RECOVERY_QUESTION}}",
-					"answer": "{{FAKE_USER_RECOVERY_ANSWER}}"
-				}
-			},
-			"groupIds": [
-				"{{BRONZE_GROUP.id}}"
-			]
-		}
-	},
 	"SILVER_USER": {
 		"saveToOutput": true,
 		"objType": "json",
@@ -164,8 +81,7 @@
 				"firstName": "{{GENERATE_FIRSTNAME}}",
 				"lastName": "{{GENERATE_LASTNAME}}",
 				"email": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}",
-				"login": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}",
-				"secondEmail": "{{SECOND_EMAIL}}"
+				"login": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}"
 			},
 			"credentials": {
 				"password" : {
@@ -177,7 +93,7 @@
 				}
 			},
 			"groupIds": [
-				"{{BRONZE_GROUP.id}}", "{{SILVER_GROUP.id}}"
+				"{{SILVER_GROUP.id}}"
 			]
 		}
 	},
@@ -190,8 +106,7 @@
 				"firstName": "{{GENERATE_FIRSTNAME}}",
 				"lastName": "{{GENERATE_LASTNAME}}",
 				"email": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}",
-				"login": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}",
-				"secondEmail": "{{SECOND_EMAIL}}"
+				"login": "{{FIRSTNAME}}.{{LASTNAME}}@{{FAKE_USER_DOMAIN}}"
 			},
 			"credentials": {
 				"password" : {
@@ -203,7 +118,7 @@
 				}
 			},
 			"groupIds": [
-				"{{BRONZE_GROUP.id}}", "{{SILVER_GROUP.id}}", "{{GOLD_GROUP.id}}"
+				"{{SILVER_GROUP.id}}", "{{GOLD_GROUP.id}}"
 			]
 		}
 	},
@@ -240,7 +155,7 @@
 			"conditions": {
 				"clients": {
 					"include": [
-						"{{AUTHN_CLIENT_ID}}"
+						"0oaflhwfk7n8dXOcV0h7"
 					]
 				}
 			}
