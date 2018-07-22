@@ -1,0 +1,19 @@
+{
+	"TAG": {
+		"hint": "this is a unique string to help identify objects created by this bootstrap session",
+		"saveToOutput": true,
+		"default": "{{GENERATE_TAG}}",
+		"objType": "string"
+	},
+	"TEST_GROUP": {
+		"saveToOutput": true,
+		"objType": "json",
+		"objectClass": "okta:user_group",
+		"default": {
+			"profile": {
+				"name": "test group {{TAG}}",
+				"description": "a group created during a test of Okta bootstrap"
+			}
+		}
+	}
+}

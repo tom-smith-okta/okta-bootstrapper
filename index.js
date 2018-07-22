@@ -1,4 +1,14 @@
-require('dotenv').config()
+/********************************
+// Okta Bootstrap
+*/
+
+var dotenv = require('dotenv')
+
+const result = dotenv.config()
+
+if (result.error) {
+	console.log("Warning: cannot find a .env file")
+}
 
 var fs = require("fs")
 const okta = require("@okta/okta-sdk-nodejs")
@@ -82,10 +92,15 @@ get_command_line_args()
 	})
 })
 .catch((error) => {
-	if (error === "no input file supplied.") {
+	if (error === "No input file supplied.") {
 		console.log(error)
-		console.log("please supply an input file via the command line:")
+		console.log("Please supply an input file via the command line:")
 		console.log("   node index.js --mulesoft")
+		console.log("Or if you are using Okta bootstrap from a parent module:")
+		console.log("   node okta_bootstrap.js --mulesoft")
+	}
+	else {
+		console.log(error)
 	}
 	process.exit()
 })
@@ -285,7 +300,7 @@ function get_command_line_args() {
 			resolve(image_name)
 		}
 		else {
-			reject ("no input file supplied.")
+			reject ("No input file supplied.")
 		}
 	})
 }
@@ -304,7 +319,7 @@ function get_creds() {
 
 			}
 			else { // could not find Okta API token in env
-				msg += "Your Okta tenant name must be an environment variable."
+				msg += "Your Okta API token must be an environment variable."
 				msg += "\nuse the format: https://dev-292102.oktapreview.com"
 
 				reject(msg)
