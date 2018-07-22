@@ -1,6 +1,6 @@
 {
   "name": "okta-bootstrapper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The Okta tenant bootstrapper allows you to create Okta objects (users, groups, apps, etc.) in your Okta tenant in an automated way.",
   "main": "index.js",
   "scripts": {
